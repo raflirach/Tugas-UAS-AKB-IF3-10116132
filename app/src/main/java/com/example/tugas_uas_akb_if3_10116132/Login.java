@@ -71,7 +71,9 @@ public class Login extends AppCompatActivity implements LoginView {
 
     @Override
     public void onSuccess() {
-        Toast.makeText(Login.this, "Login Success", Toast.LENGTH_SHORT).show();
+        Intent home = new Intent(Login.this,BottomNavigation.class);
+        startActivity(home);
+        finish();
     }
 
     @Override
