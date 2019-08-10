@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Login">
 
     <LinearLayout
-        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
@@ -16,35 +17,15 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
+            android:paddingHorizontal="50dp"
             android:weightSum="12">
 
-            <ImageView
-                android:id="@+id/slideImage"
+            <EditText
+                android:id="@+id/edtName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_weight="7"
-                android:src="@drawable/gambar1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="12">
-
-            <TextView
-                android:textColor="@android:color/white"
-                android:id="@+id/slideHeading"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="30dp"
                 android:layout_weight="10"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:text="HEADING"
-                android:textAlignment="center" />
+                android:hint="Username" />
         </LinearLayout>
 
         <LinearLayout
@@ -52,22 +33,43 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
+            android:paddingHorizontal="50dp"
             android:weightSum="12">
 
-            <TextView
-                android:textColor="@android:color/white"
-                android:id="@+id/slideDesc"
+            <EditText
+                android:id="@+id/edtPassword"
                 android:layout_width="0dp"
-                android:layout_weight="8"
-                android:textSize="16sp"
                 android:layout_height="wrap_content"
-                android:lineSpacingMultiplier="1.5"
-                android:paddingVertical="15dp"
-                android:text="Menampilkan informasi tentang pengguna berupa foto diri, nim, nama dan deskripsi diri"
-                android:textAlignment="center" />
+                android:layout_weight="10"
+                android:hint="Password"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="50dp"
+            android:weightSum="12">
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="Login" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="Register" />
         </LinearLayout>
 
 
     </LinearLayout>
+
 
 </RelativeLayout>

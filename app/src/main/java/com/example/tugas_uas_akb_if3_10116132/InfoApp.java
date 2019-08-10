@@ -1,5 +1,6 @@
 package com.example.tugas_uas_akb_if3_10116132;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tugas_uas_akb_if3_10116132.View.SlideAdapter;
+import com.example.tugas_uas_akb_if3_10116132.Adapter.SlideAdapter;
 
 public class InfoApp extends AppCompatActivity {
     private ViewPager slidePager;
@@ -60,7 +61,9 @@ public class InfoApp extends AppCompatActivity {
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(InfoApp.this, "YOHOOO", Toast.LENGTH_SHORT).show();
+                Intent intentLogin = new Intent(InfoApp.this,Login.class);
+                startActivity(intentLogin);
+                finish();
             }
         });
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/image_visibility"
     tools:context=".InfoApp">
 
     <android.support.v4.view.ViewPager
@@ -33,6 +33,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:visibility="invisible"
+        android:textColor="@android:color/white"
         android:text="Prev" />
 
     <Button
@@ -42,6 +43,7 @@
         android:background="@android:color/transparent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:textColor="@android:color/white"
         android:text="Next" />
 
     <Button
@@ -52,6 +54,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:visibility="invisible"
+        android:textColor="@android:color/white"
         android:text="finish" />
 
 </RelativeLayout>
