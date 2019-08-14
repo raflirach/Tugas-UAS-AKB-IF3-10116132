@@ -7,6 +7,7 @@
 
 package com.example.tugas_uas_akb_if3_10116132;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,8 +15,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class BottomNavigation extends AppCompatActivity {
+import com.example.tugas_uas_akb_if3_10116132.Model.MainModel;
+import com.example.tugas_uas_akb_if3_10116132.View.MainView;
+
+public class BottomNavigation extends AppCompatActivity implements MainView {
+
+    Boolean session;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -27,16 +34,27 @@ public class BottomNavigation extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_profile:
                     selectedFragment = new ProfileFragment();
+
                     break;
                 case R.id.navigation_contact:
                     selectedFragment = new ContactFragment();
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
                     break;
                 case R.id.navigation_friends:
                     selectedFragment = new FriendFragment();
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                    break;
+                case R.id.navigation_logout:
+                    MainModel.save(getApplicationContext(),"session","false");
+                    startActivity(new Intent(BottomNavigation.this,Login.class));
+                    finish();
                     break;
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
-            return true;
+            if(selectedFragment!=null){
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                return true;
+            }else
+                return true;
         }
     };
 
@@ -48,7 +66,18 @@ public class BottomNavigation extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        SESSION();
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
     }
 
+    @Override
+    public void SESSION() {
+        session = Boolean.valueOf(MainModel.read(getApplicationContext(),"session","false"));
+        if(session){
+            Toast.makeText(this, "You is Logged in", Toast.LENGTH_SHORT).show();
+        }else{
+            startActivity(new Intent(BottomNavigation.this,Login.class));
+        }
+    }
 }

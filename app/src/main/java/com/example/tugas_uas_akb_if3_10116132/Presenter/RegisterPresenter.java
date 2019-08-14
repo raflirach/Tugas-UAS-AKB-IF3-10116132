@@ -7,8 +7,10 @@
 
 package com.example.tugas_uas_akb_if3_10116132.Presenter;
 
+import android.support.design.widget.TextInputLayout;
+
 public interface RegisterPresenter {
-    void onHandleRegister(String username, String password);
-    void onSuccess();
-    void onError(String message);
+    boolean validateEmail(TextInputLayout input, String email);
+    boolean validateUsername(TextInputLayout input, String username);
+    boolean validatePassword(TextInputLayout input, String password);
 }

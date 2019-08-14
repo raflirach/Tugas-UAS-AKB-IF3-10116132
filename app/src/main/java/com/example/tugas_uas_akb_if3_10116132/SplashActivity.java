@@ -11,13 +11,19 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.example.tugas_uas_akb_if3_10116132.Model.MainModel;
+import com.example.tugas_uas_akb_if3_10116132.Model.SplashModel;
+import com.example.tugas_uas_akb_if3_10116132.View.SplashView;
 import com.wang.avi.AVLoadingIndicatorView;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity implements SplashView {
 
     private LinearLayout lv_loading;
     private AVLoadingIndicatorView avi;
+
+    boolean firstTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +37,21 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashActivity.this, InfoApp.class);
-                startActivity(i);
-                finish();
+                firstTime();
             }
         },5000);
+    }
+
+    @Override
+    public void firstTime() {
+        firstTime = Boolean.valueOf(SplashModel.read(getApplicationContext(),"first","false"));
+        if(firstTime){
+            startActivity(new Intent(SplashActivity.this,BottomNavigation.class));
+            finish();
+        }else{
+            startActivity(new Intent(SplashActivity.this,InfoApp.class));
+            SplashModel.save(getApplicationContext(),"first","true");
+            finish();
+        }
     }
 }

@@ -68,7 +68,7 @@ public class InfoApp extends AppCompatActivity {
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentLogin = new Intent(InfoApp.this,Login.class);
+                Intent intentLogin = new Intent(InfoApp.this,BottomNavigation.class);
                 startActivity(intentLogin);
                 finish();
             }
