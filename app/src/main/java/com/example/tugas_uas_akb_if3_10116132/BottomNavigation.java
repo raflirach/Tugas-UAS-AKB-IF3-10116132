@@ -38,11 +38,10 @@ public class BottomNavigation extends AppCompatActivity implements MainView {
                     break;
                 case R.id.navigation_contact:
                     selectedFragment = new ContactFragment();
-                    //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
                     break;
                 case R.id.navigation_friends:
-                    selectedFragment = new FriendFragment();
-                    //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                    startActivity(new Intent(BottomNavigation.this,Friends.class));
+                    finish();
                     break;
                 case R.id.navigation_logout:
                     MainModel.save(getApplicationContext(),"session","false");
@@ -75,7 +74,7 @@ public class BottomNavigation extends AppCompatActivity implements MainView {
     public void SESSION() {
         session = Boolean.valueOf(MainModel.read(getApplicationContext(),"session","false"));
         if(session){
-            Toast.makeText(this, "You is Logged in", Toast.LENGTH_SHORT).show();
+
         }else{
             startActivity(new Intent(BottomNavigation.this,Login.class));
         }
