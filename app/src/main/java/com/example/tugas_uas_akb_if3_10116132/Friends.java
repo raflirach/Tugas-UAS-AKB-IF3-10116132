@@ -18,12 +18,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tugas_uas_akb_if3_10116132.Adapter.UserAdapter;
 import com.example.tugas_uas_akb_if3_10116132.Database.RealmHelper;
-import com.example.tugas_uas_akb_if3_10116132.Model.User;
+import com.example.tugas_uas_akb_if3_10116132.Model.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +39,7 @@ public class Friends extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
 
     UserAdapter adapter;
-    List<User> user;
+    List<UserModel> userModel;
 
     FloatingActionButton fab;
 
@@ -61,11 +60,11 @@ public class Friends extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         realmHelper = new RealmHelper(realm);
-        user = new ArrayList<>();
+        userModel = new ArrayList<>();
 
-        user = realmHelper.getAllUser();
+        userModel = realmHelper.getAllUser();
 
-        adapter = new UserAdapter( user,this);
+        adapter = new UserAdapter(userModel,this);
 
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
@@ -111,16 +110,16 @@ public class Friends extends AppCompatActivity {
                 strInstagram = edtInstagram.getText().toString();
 
                 if(!strNim.isEmpty() && !strNama.isEmpty()){
-                    User user = new User();
-                    user.setNim(strNim);
-                    user.setNama(strNama);
-                    user.setEmail(strEmail);
-                    user.setKelas(strKelas);
-                    user.setTelepon(strTelepon);
-                    user.setInstagram(strInstagram);
+                    UserModel userModel = new UserModel();
+                    userModel.setNim(strNim);
+                    userModel.setNama(strNama);
+                    userModel.setEmail(strEmail);
+                    userModel.setKelas(strKelas);
+                    userModel.setTelepon(strTelepon);
+                    userModel.setInstagram(strInstagram);
 
                     realmHelper = new RealmHelper(realm);
-                    realmHelper.save(user);
+                    realmHelper.save(userModel);
 
                     Toast.makeText(Friends.this, "Data Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
 

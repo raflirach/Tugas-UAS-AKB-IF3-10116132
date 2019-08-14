@@ -9,7 +9,7 @@ package com.example.tugas_uas_akb_if3_10116132.Database;
 
 import android.util.Log;
 
-import com.example.tugas_uas_akb_if3_10116132.Model.User;
+import com.example.tugas_uas_akb_if3_10116132.Model.UserModel;
 
 import java.util.List;
 
@@ -24,21 +24,21 @@ public class RealmHelper {
     }
 
     //save data to realm
-    public void save(final User user){
+    public void save(final UserModel userModel){
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
                 if (realm != null){
                     Log.e("success","database was created");
-                    Number currentIdNum = realm.where(User.class).max("id");
+                    Number currentIdNum = realm.where(UserModel.class).max("id");
                     int nextId;
                     if(currentIdNum == null){
                         nextId = 1;
                     }else {
                         nextId = currentIdNum.intValue() + 1;
                     }
-                    user.setId(nextId);
-                    User u = realm.copyToRealm(user);
+                    userModel.setId(nextId);
+                    UserModel u = realm.copyToRealm(userModel);
                 }else{
                     Log.e("failed","database not exist");
                 }
@@ -47,9 +47,9 @@ public class RealmHelper {
     }
 
     //select data from realm
-    public List<User> getAllUser(){
-        RealmResults<User> users = realm.where(User.class).findAll();
-        return users;
+    public List<UserModel> getAllUser(){
+        RealmResults<UserModel> userModels = realm.where(UserModel.class).findAll();
+        return userModels;
     }
 
     //edit
@@ -57,7 +57,7 @@ public class RealmHelper {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                User users = realm.where(User.class)
+                UserModel users = realm.where(UserModel.class)
                         .equalTo("id",id)
                         .findFirst();
 
@@ -86,7 +86,7 @@ public class RealmHelper {
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                User users = realm.where(User.class)
+                UserModel users = realm.where(UserModel.class)
                         .equalTo("id",id)
                         .findFirst();
 

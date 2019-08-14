@@ -19,13 +19,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tugas_uas_akb_if3_10116132.Database.RealmHelper;
 import com.example.tugas_uas_akb_if3_10116132.Friends;
-import com.example.tugas_uas_akb_if3_10116132.Model.User;
+import com.example.tugas_uas_akb_if3_10116132.Model.UserModel;
 import com.example.tugas_uas_akb_if3_10116132.R;
 
 import java.util.List;
@@ -35,7 +34,7 @@ import io.realm.RealmConfiguration;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
 
-    private List<User> user;
+    private List<UserModel> userModel;
     Context context;
 
     Realm realm;
@@ -47,8 +46,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
     int id;
     String nim, nama, kelas, telepon, email, instagram;
 
-    public UserAdapter(List<User> user, Context context) {
-        this.user = user;
+    public UserAdapter(List<UserModel> userModel, Context context) {
+        this.userModel = userModel;
         this.context = context;
     }
 
@@ -61,7 +60,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
-        User users = user.get(i);
+        UserModel users = userModel.get(i);
         holder.txtNim.setText(users.getNim());
         holder.txtNama.setText(users.getNama());
         holder.txtKelas.setText(users.getKelas());
@@ -72,7 +71,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        return user.size();
+        return userModel.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -119,7 +118,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
                     realm = Realm.getInstance(configuration);
 
                     realmHelper = new RealmHelper(realm);
-                    realmHelper.delete(user.get(getAdapterPosition()).getId());
+                    realmHelper.delete(userModel.get(getAdapterPosition()).getId());
 
                     Toast.makeText(context, "Data Berhasil dihapus", Toast.LENGTH_SHORT).show();
 
@@ -151,13 +150,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
             edtTelepon = (TextInputEditText) edit_layout.findViewById(R.id.edtTelepon);
             edtInstagram = (TextInputEditText) edit_layout.findViewById(R.id.edtInstagram);
 
-            id = user.get(getAdapterPosition()).getId();
-            nim = user.get(getAdapterPosition()).getNim();
-            nama = user.get(getAdapterPosition()).getNama();
-            kelas = user.get(getAdapterPosition()).getKelas();
-            telepon = user.get(getAdapterPosition()).getTelepon();
-            email = user.get(getAdapterPosition()).getEmail();
-            instagram = user.get(getAdapterPosition()).getInstagram();
+            id = userModel.get(getAdapterPosition()).getId();
+            nim = userModel.get(getAdapterPosition()).getNim();
+            nama = userModel.get(getAdapterPosition()).getNama();
+            kelas = userModel.get(getAdapterPosition()).getKelas();
+            telepon = userModel.get(getAdapterPosition()).getTelepon();
+            email = userModel.get(getAdapterPosition()).getEmail();
+            instagram = userModel.get(getAdapterPosition()).getInstagram();
 
             edtNim.setText(nim);
             edtNama.setText(nama);
