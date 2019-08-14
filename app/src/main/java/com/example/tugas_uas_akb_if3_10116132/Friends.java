@@ -10,6 +10,7 @@ package com.example.tugas_uas_akb_if3_10116132;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,7 +44,7 @@ public class Friends extends AppCompatActivity {
 
     FloatingActionButton fab;
 
-    EditText edtNim,edtNama,edtKelas,edtEmail,edtTelepon,edtInstagram;
+    TextInputEditText edtNim,edtNama,edtKelas,edtEmail,edtTelepon,edtInstagram;
     String strNim, strNama, strKelas, strEmail, strTelepon,strInstagram;
 
     @Override
@@ -86,12 +87,12 @@ public class Friends extends AppCompatActivity {
         LayoutInflater inflater = this.getLayoutInflater();
         View add_layout = inflater.inflate(R.layout.add_layout,null);
 
-        edtNim = (EditText)add_layout.findViewById(R.id.edtNim);
-        edtNama = (EditText)add_layout.findViewById(R.id.edtNama);
-        edtKelas = (EditText)add_layout.findViewById(R.id.edtKelas);
-        edtEmail = (EditText)add_layout.findViewById(R.id.edtEmail);
-        edtTelepon = (EditText)add_layout.findViewById(R.id.edtTelepon);
-        edtInstagram = (EditText)add_layout.findViewById(R.id.edtInstagram);
+        edtNim = (TextInputEditText) add_layout.findViewById(R.id.edtNim);
+        edtNama = (TextInputEditText)add_layout.findViewById(R.id.edtNama);
+        edtKelas = (TextInputEditText)add_layout.findViewById(R.id.edtKelas);
+        edtEmail = (TextInputEditText)add_layout.findViewById(R.id.edtEmail);
+        edtTelepon = (TextInputEditText)add_layout.findViewById(R.id.edtTelepon);
+        edtInstagram = (TextInputEditText)add_layout.findViewById(R.id.edtInstagram);
 
         alertDialog.setView(add_layout);
         alertDialog.setIcon(R.drawable.ic_add_black_24dp);

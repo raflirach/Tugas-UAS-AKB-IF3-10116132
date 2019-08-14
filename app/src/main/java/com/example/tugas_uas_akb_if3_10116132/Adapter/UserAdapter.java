@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -42,7 +43,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
 
     UserAdapter adapter;
 
-    EditText edtNim, edtNama, edtKelas, edtEmail, edtTelepon, edtInstagram;
+    TextInputEditText edtNim, edtNama, edtKelas, edtEmail, edtTelepon, edtInstagram;
     int id;
     String nim, nama, kelas, telepon, email, instagram;
 
@@ -143,12 +144,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             View edit_layout = inflater.inflate(R.layout.edit_layout, null);
 
-            edtNim = (EditText) edit_layout.findViewById(R.id.edtNim);
-            edtNama = (EditText) edit_layout.findViewById(R.id.edtNama);
-            edtKelas = (EditText) edit_layout.findViewById(R.id.edtKelas);
-            edtEmail = (EditText) edit_layout.findViewById(R.id.edtEmail);
-            edtTelepon = (EditText) edit_layout.findViewById(R.id.edtTelepon);
-            edtInstagram = (EditText) edit_layout.findViewById(R.id.edtInstagram);
+            edtNim = (TextInputEditText) edit_layout.findViewById(R.id.edtNim);
+            edtNama = (TextInputEditText) edit_layout.findViewById(R.id.edtNama);
+            edtKelas = (TextInputEditText) edit_layout.findViewById(R.id.edtKelas);
+            edtEmail = (TextInputEditText) edit_layout.findViewById(R.id.edtEmail);
+            edtTelepon = (TextInputEditText) edit_layout.findViewById(R.id.edtTelepon);
+            edtInstagram = (TextInputEditText) edit_layout.findViewById(R.id.edtInstagram);
 
             id = user.get(getAdapterPosition()).getId();
             nim = user.get(getAdapterPosition()).getNim();
