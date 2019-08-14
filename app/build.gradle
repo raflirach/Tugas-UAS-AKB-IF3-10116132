@@ -16,6 +16,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        applicationVariants.all{
+            variant ->
+                variant.outputs.each{
+                    output->
+                        def name = "Tugas-UAS-AKB-IF3-10116132.apk"
+                        output.outputFileName=name
+                }
+        }
     }
 }
 
